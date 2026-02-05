@@ -1,11 +1,11 @@
-import { Container, Image, Input, Text } from "@chakra-ui/react"
+import { Container, Flex, Input, Text } from "@chakra-ui/react"
 import {
   Link as RouterLink,
   createFileRoute,
   redirect,
 } from "@tanstack/react-router"
 import { type SubmitHandler, useForm } from "react-hook-form"
-import { FiLock, FiMail } from "react-icons/fi"
+import { FiLock, FiMail, FiUploadCloud } from "react-icons/fi"
 
 import type { Body_login_login_access_token as AccessToken } from "@/client"
 import { Button } from "@/components/ui/button"
@@ -13,7 +13,6 @@ import { Field } from "@/components/ui/field"
 import { InputGroup } from "@/components/ui/input-group"
 import { PasswordInput } from "@/components/ui/password-input"
 import useAuth, { isLoggedIn } from "@/hooks/useAuth"
-import Logo from "/assets/images/fastapi-logo.svg"
 import { emailPattern, passwordRules } from "../utils"
 
 export const Route = createFileRoute("/login")({
@@ -66,14 +65,12 @@ function Login() {
         gap={4}
         centerContent
       >
-        <Image
-          src={Logo}
-          alt="FastAPI logo"
-          height="auto"
-          maxW="2xs"
-          alignSelf="center"
-          mb={4}
-        />
+        <Flex alignItems="center" gap={3} mb={4} alignSelf="center">
+          <FiUploadCloud size={48} />
+          <Text fontSize="3xl" fontWeight="bold">
+            Deploy test
+          </Text>
+        </Flex>
         <Field
           invalid={!!errors.username}
           errorText={errors.username?.message || !!error}
